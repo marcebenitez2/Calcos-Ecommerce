@@ -42,6 +42,7 @@ const Page = () => {
           />
           <input
             className="bg-[#1f1f1f] w-3/5 h-8 px-3 rounded-md"
+            type="password"
             placeholder="Contraseña"
             required
             onChange={(e) => setPassword(e.target.value)}

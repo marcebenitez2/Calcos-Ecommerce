@@ -51,7 +51,7 @@ const Page = () => {
 
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="w-2/4 h-2/4 bg-[#ffde59] flex flex-col items-center p-6 rounded-xl">
+      <div className="w-2/5 h-2/5 bg-[#ffde59] flex flex-col items-center p-6 rounded-xl">
         <h1 className="text-black text-4xl font-semibold">
           Añadir {selectedOption}
         </h1>

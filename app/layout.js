@@ -1,7 +1,7 @@
-
-import SideBarView from "@/components/sidebar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Page from "./store/page";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,11 +14,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex-col">
-         <SideBarView/>
-          <div className="h-screen ml-0 md:ml-52 pt-12">
-            {children}
-          </div>
+        <div>
+          <div>{children}</div>
         </div>
       </body>
     </html>

@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import { categories } from "@/exports/categories";
-import { actualizarCalco } from "@/firebase/firebase";
+import { actualizarCalco, eliminarCalco } from "@/firebase/firebase";
 
 const CalcoCardAdmin = ({ calco, id }) => {
   const [edit, setEdit] = useState(false);
-  const [updateImage, setupdateImage] = useState(null);
+  const [updateImage, setupdateImage] = useState(calco.imagen);
   const [updateName, setupdateName] = useState(calco.nombre);
   const [updateCategory, setupdateCategory] = useState(calco.categoria);
 
@@ -50,6 +50,7 @@ const CalcoCardAdmin = ({ calco, id }) => {
               ))}
             </select>
           </div>
+          <button onClick={()=>eliminarCalco(id)}>Eliminar</button>
           <button
             className="bg-[#ffde59] text-black h-8"
             onClick={() =>

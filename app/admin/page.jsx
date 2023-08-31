@@ -1,4 +1,4 @@
-import StickerGrid from "@/components/stickerGridAdmin";
+import StickerGrid from "@/components/admin/stickerGridAdmin";
 import React from "react";
 import { AiOutlineArrowLeft } from "../../node_modules/react-icons/ai";
 import Link from "next/link";

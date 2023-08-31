@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AiOutlineFileAdd } from "./../node_modules/react-icons/ai";
+import { AiOutlineFileAdd } from "react-icons/ai";
 
 const CalcoCardEmpty = () => {
   return (

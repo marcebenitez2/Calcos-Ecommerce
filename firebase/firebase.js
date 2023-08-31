@@ -7,6 +7,7 @@ import {
   doc,
   setDoc,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import {
   getDownloadURL,
@@ -96,7 +97,41 @@ export async function cargarCalco(nombre, categoria, imagen) {
     imagen: nuevaURL,
   });
   console.log("el documento tiene el ID: " + newDoc.id);
+}
 
+export async function eliminarCalco(calcoID) {
+  try {
+    const collectionName = "calcos";
+    const idDoc = calcoID;
+
+    const docRef = doc(bd, collectionName, idDoc);
+
+    await deleteDoc(docRef);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchOfertas() {
+  let ofertas = [];
+  try {
+    const ofertasRef = collection(bd, "ofertas");
+    const querySnapshot = await getDocs(ofertasRef);
+    ofertas = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      data: doc.data(),
+    }));
+  } catch (error) {
+    console.log(error);
+  }
+  return ofertas;
+}
+
+export async function cargarOFerta(ofertaString, categoriaString) {
+  const newDoc = await addDoc(collection(bd, "ofertas"), {
+    nombre: ofertaString,
+    categoria: categoriaString,
+  });
 }
 
 export default bd;

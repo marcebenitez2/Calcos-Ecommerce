@@ -1,9 +1,14 @@
 "use client";
 
+import { cargarCalco } from "@/firebase/firebase";
 import React, { useState } from "react";
 
 const Page = () => {
   const [selectedOption, setSelectedOption] = useState("calcomania");
+  const [nombre, setNombre] = useState("");
+  const [categoria, setCategoria] = useState("Otros");
+  const [imagen, setImagen] = useState(null);
+
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -15,10 +20,11 @@ const Page = () => {
         <div className="h-full w-full flex flex-col items-center justify-evenly pt-6 gap-4">
           <div className="w-full flex justify-center gap-4">
             <input
-              className="w-1/3 h-8 px-4"
+              className="w-1/3 h-8 px-4 text-black"
               placeholder="Nombre de la calco"
+              onChange={(e)=>setNombre(e.target.value)}
             />
-            <select className="text-black" defaultValue={"Anime"}>
+            <select className="text-black" value={categoria} onChange={(e)=>setCategoria(e.target.value)}>
               <option>Anime</option>
               <option>Amor</option>
               <option>Videojuegos</option>
@@ -27,8 +33,8 @@ const Page = () => {
               <option>Otros</option>
             </select>
           </div>
-          <input type="file" />
-          <button className="w-1/4 h-12 bg-[#1f1f1f]">Cargar</button>
+          <input type="file" onChange={(e)=>setImagen(e.target.files[0])}/>
+          <button className="w-1/4 h-12 bg-[#1f1f1f]" onClick={()=>cargarCalco(nombre,categoria,imagen)}>Cargar</button>
         </div>
       );
     } else if (selectedOption === "oferta") {
@@ -36,14 +42,14 @@ const Page = () => {
         <div className="h-full w-full flex flex-col items-center pt-6 gap-8">
           <input className="w-1/2 h-8 px-4" placeholder="Nombre de la oferta" />
           <select className="text-black" defaultValue={"Anime"}>
-              <option>Anime</option>
-              <option>Amor</option>
-              <option>Videojuegos</option>
-              <option>Futbol</option>
-              <option>Basquet</option>
-              <option>Otros</option>
-            </select>
-            <button className="w-1/4 h-12 bg-[#1f1f1f]">Cargar</button>
+            <option>Anime</option>
+            <option>Amor</option>
+            <option>Videojuegos</option>
+            <option>Futbol</option>
+            <option>Basquet</option>
+            <option>Otros</option>
+          </select>
+          <button className="w-1/4 h-12 bg-[#1f1f1f]">Cargar</button>
         </div>
       );
     }
@@ -84,5 +90,3 @@ const Page = () => {
 };
 
 export default Page;
-
-

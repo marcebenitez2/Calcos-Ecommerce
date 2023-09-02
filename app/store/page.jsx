@@ -1,9 +1,10 @@
+import Offer from '@/components/bodyStore/offer';
 import React from 'react';
 
 const Page = () => {
     return (
         <div>
-            <h1>HOlaa</h1>
+        
         </div>
     );
 }

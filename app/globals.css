@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   color: white;
   background-color: #1f1f1f;
@@ -10,3 +9,6 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+
+

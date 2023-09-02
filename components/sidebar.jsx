@@ -12,7 +12,7 @@ const SideBarView = ({ isSideBarOpen }) => {
       <aside
         className={`fixed top-0 left-0 z-50 w-52 h-screen p-4 transition-transform ${
           isSideBarOpen ? "translate-x-0" : "-translate-x-full"
-        } bg-[#ffde59] md:translate-x-0 border-b-yellow-600 flex flex-col justify-between`}
+        } bg-[#ffde59] md:translate-x-0 flex flex-col justify-between `}
       >
         <div className="h-full">
           <Link href={"/"}>

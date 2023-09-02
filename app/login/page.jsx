@@ -8,11 +8,11 @@ const Page = () => {
 
   const router = useRouter()
 
-  console.log(router)
+ 
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Corrección aquí
+  const [errorMessage, setErrorMessage] = useState(""); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,10 +20,10 @@ const Page = () => {
     const auth = getAuth();
     try {
       await signInWithEmailAndPassword(auth, username, password);
-      console.log("Entraste!!!");
+      
       router.push("/admin")
     } catch (error) {
-      setErrorMessage("Credenciales incorrectas"); // Corrección aquí
+      setErrorMessage("Credenciales incorrectas"); 
     }
   };
 

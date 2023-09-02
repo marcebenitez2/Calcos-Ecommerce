@@ -22,7 +22,7 @@ const CalcoCardAdmin = ({ calco, id }) => {
   return (
     <div className="h-96">
       {edit ? (
-        <div className="w-full h-full flex flex-col justify-evenly px-8 bg-zinc-600 animate-fade animate-once animate-duration-300 animate-ease-linear animate-alternate animate-fill-forwards ">
+        <div className="w-full h-full flex flex-col justify-evenly px-8 bg-zinc-600">
           <input
             type="file"
             onChange={(e) => {

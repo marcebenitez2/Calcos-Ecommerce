@@ -2,7 +2,7 @@ import React from 'react';
 
 const Layout = ({children}) => {
     return (
-        <div className='h-screen w-screen'>
+        <div className='h-screen'>
             {children}
         </div>
     );

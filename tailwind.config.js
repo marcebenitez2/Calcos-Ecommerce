@@ -26,6 +26,7 @@ module.exports = {
 
       'smn': { max: "639px" },
       // => @media (max-width: 639px) { ... }
+
     },
     extend: {
       backgroundImage: {

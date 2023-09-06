@@ -1,4 +1,4 @@
-import LogoAndCart from "@/components/logoAndLog";
+import LogoAndCart from "@/components/logoAndCart";
 import React from "react";
 import { CartProvider } from "@/context/cartContext";
 

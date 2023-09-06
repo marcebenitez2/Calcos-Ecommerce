@@ -3,15 +3,13 @@
 import { categories } from "@/exports/categories";
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/context/cartContext";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const GridCalcos = ({ calcos, promoSelected }) => {
+const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
   const [originalCalcos, setOriginalCalcos] = useState(calcos);
   const [calcosCopy, setCalcosCopy] = useState(calcos);
   const [inputSearch, setinputSearch] = useState("");
-  const { cart, setCart } = useContext(CartContext);
-  const [selectedCalco, setSelectedCalco] = useState([]);
+  const [clickedId, setClickedId] = useState(null);
 
   const handleSearch = (e) => {
     setinputSearch(e.target.value);
@@ -34,6 +32,8 @@ const GridCalcos = ({ calcos, promoSelected }) => {
   };
 
   const addCart = (x) => {
+    setClickedId(x.id);
+    setTimeout(() => setClickedId(null), 300);
     if (promoSelected != null) {
       if (cart.length < promoSelected) {
         setCart([...cart, x]);
@@ -44,10 +44,6 @@ const GridCalcos = ({ calcos, promoSelected }) => {
       setCart([...cart, x]);
     }
   };
-
-  useEffect(() => {
-   console.log(cart)
-  }, [cart]);
 
   return (
     <div className="w-full flex flex-col gap-7">
@@ -74,7 +70,11 @@ const GridCalcos = ({ calcos, promoSelected }) => {
         {calcosCopy.map((x) => (
           <div
             key={x.id}
-            className={`card cursor-pointer mdn:w-60`}
+            className={`card cursor-pointer mdn:w-60 ${
+              clickedId === x.id
+                ? "animate-jump animate-once animate-duration-300"
+                : ""
+            }`}
             onClick={() => addCart(x)}
           >
             <div className="card-details">
@@ -88,7 +88,6 @@ const GridCalcos = ({ calcos, promoSelected }) => {
           </div>
         ))}
       </div>
-      {/* <ToastContainer /> */}
     </div>
   );
 };

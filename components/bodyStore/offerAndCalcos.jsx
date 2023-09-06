@@ -1,18 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Offer from "./offer";
 import GridCalcos from "./gridCalcos";
 import CalcosSelected from "./calcosSelected";
+import { CartContext } from "@/context/cartContext";
 
 
 const OfferAndCalcos = ({ calcos }) => {
-  const [promoSelected, setPromoSelected] = useState(null);
+  const {cart,setCart,promo,setPromo,enRegla,setEnRegla} = useContext(CartContext);
+
+  useEffect(() => {
+    if(cart.length === promo) setEnRegla(true)
+    if(cart.length > promo) setEnRegla(false)
+  }, [cart]);
+  
 
   return (
     <div>
-      <Offer changePromo={setPromoSelected} />
-      <GridCalcos calcos={calcos} promoSelected={promoSelected}/>
-      <CalcosSelected promo={promoSelected}/>
+      <Offer cart={cart} changePromo={setPromo} setEnRegla={setEnRegla}/>
+      <GridCalcos calcos={calcos} promoSelected={promo} cart={cart} setCart={setCart} />
+      <CalcosSelected cart={cart} setCart={setCart} promo={promo} enRegla={enRegla}/>
     </div>
   );
 };

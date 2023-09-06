@@ -1,14 +1,16 @@
-import LogoAndLog from "@/components/logoAndLog";
+import LogoAndCart from "@/components/logoAndLog";
 import React from "react";
+import { CartProvider } from "@/context/cartContext";
 
 const Layout = ({ children }) => {
-
-
+  
   return (
-    <div>
-      <LogoAndLog/>
-      <div className="w-4/6 m-auto lgn:w-5/6 ">{children}</div>
-    </div>
+    <CartProvider>
+      <div>
+        <LogoAndCart />
+        <div className="w-4/6 m-auto lgn:w-5/6 ">{children}</div>
+      </div>
+    </CartProvider>
   );
 };
 

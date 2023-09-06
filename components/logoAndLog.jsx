@@ -5,17 +5,17 @@ import Link from "next/link";
 import { BsFillPersonFill } from "../node_modules/react-icons/bs";
 import { BsCartFill } from "../node_modules/react-icons/bs";
 
-const LogoAndLog = () => {
+const LogoAndCart = () => {
   return (
     <div className="w-screen fixed flex justify-between py-7 px-10 mdn:px-1">
       <Link href={"/store"}>
-        <Image src={logo} width={75}/>
+        <Image src={logo} width={75} alt="Logo"/>
       </Link>
       <Link href={'/cart'}>
-        <BsCartFill size={"50px"} fill="#ffde59" className="trans" />
+        <BsCartFill fill="#ffde59" className="text-5xl mdn:text-4xl"/>
       </Link>
     </div>
   );
 };
 
-export default LogoAndLog;
+export default LogoAndCart;

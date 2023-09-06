@@ -14,10 +14,9 @@ const Page = async () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center py-7 gap-8 mdn:py-16">
-      <Link href={"/admin"}>
+      <Link href={"/login"}>
         <BsFillPersonFill
-          size={"60px"}
-          className="fixed left-10 bottom-10 smn:left-0"
+          className="fixed left-10 bottom-10 text-6xl smn:left-0 mdn:text-5xl"
           fill="#ffde59"
         />
       </Link>

@@ -30,11 +30,11 @@ const Offer = ({changePromo}) => {
       {loading ? (
         <p>Cargando ofertas...</p>
       ) : (
-        <div className="w-full grid grid-cols-4 place-items-center 2xln:grid-cols-4 xln:grid-cols-3 lgn:grid-cols-2 smn:flex smn:flex-col smn:items-center gap-8 animate-fade-up animate-once animate-duration-300">
+        <div className="w-full grid grid-cols-4 place-items-center 2xln:grid-cols-4 xln:grid-cols-2 lgn:grid-cols-2 smn:flex smn:flex-col smn:items-center gap-8 animate-fade-up animate-once animate-duration-300">
           {offer.map((x) => (
             <div className="card-calco cursor-pointer" key={x.id}  onClick={()=>promoSelected(x.cantidad)}>
               <div className="card-info">
-                <Image src={offerImg} className="offer-image" />
+                <Image src={offerImg} className="offer-image" alt="Oferta"/>
                 <span className="text-2xl">{x.name}</span>
               </div>
             </div>

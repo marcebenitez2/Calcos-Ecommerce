@@ -1,8 +1,6 @@
 import "./globals.css";
 import { Lexend } from "next/font/google";
 
-
-
 const inter = Lexend({ subsets: ["latin"] });
 
 export const metadata = {

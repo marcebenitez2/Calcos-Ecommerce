@@ -1,12 +1,17 @@
 "use client";
 
 import { categories } from "@/exports/categories";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { CartContext } from "@/context/cartContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const GridCalcos = ({ calcos }) => {
+const GridCalcos = ({ calcos, promoSelected }) => {
   const [originalCalcos, setOriginalCalcos] = useState(calcos);
   const [calcosCopy, setCalcosCopy] = useState(calcos);
   const [inputSearch, setinputSearch] = useState("");
+  const { cart, setCart } = useContext(CartContext);
+  const [selectedCalco, setSelectedCalco] = useState([]);
 
   const handleSearch = (e) => {
     setinputSearch(e.target.value);
@@ -27,6 +32,22 @@ const GridCalcos = ({ calcos }) => {
       setCalcosCopy(categoryCalcos);
     }
   };
+
+  const addCart = (x) => {
+    if (promoSelected != null) {
+      if (cart.length < promoSelected) {
+        setCart([...cart, x]);
+      } else {
+        alert("No podes agregar mas");
+      }
+    } else {
+      setCart([...cart, x]);
+    }
+  };
+
+  useEffect(() => {
+   console.log(cart)
+  }, [cart]);
 
   return (
     <div className="w-full flex flex-col gap-7">
@@ -51,7 +72,11 @@ const GridCalcos = ({ calcos }) => {
       </div>
       <div className="grid grid-cols-6 gap-y-4 gap-x-4 place-items-center 2xln:grid-cols-5 xln:grid-cols-4 lgn:grid-cols-3 mdn:grid-cols-2 mdn:px-10 smn:grid-cols-1">
         {calcosCopy.map((x) => (
-          <div key={x.id} className="card cursor-pointer mdn:w-60">
+          <div
+            key={x.id}
+            className={`card cursor-pointer mdn:w-60`}
+            onClick={() => addCart(x)}
+          >
             <div className="card-details">
               <img
                 src={x.data.imagen}
@@ -63,6 +88,7 @@ const GridCalcos = ({ calcos }) => {
           </div>
         ))}
       </div>
+      {/* <ToastContainer /> */}
     </div>
   );
 };

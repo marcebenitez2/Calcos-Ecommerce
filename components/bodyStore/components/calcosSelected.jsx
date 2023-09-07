@@ -1,11 +1,9 @@
-import { CartContext } from "@/context/cartContext";
 import React, { useEffect, useState } from "react";
-import { TiDelete } from "../../node_modules/react-icons/ti";
+import { TiDelete } from "react-icons/ti";
 import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
 
-const CalcosSelected = ({ cart,setCart,promo,enRegla }) => {
-  // const [esIncorrecto, setesIncorrecto] = useState(false);
-
+const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
   const counts = cart.reduce((acc, curr) => {
     acc[curr.data.nombre] = (acc[curr.data.nombre] || 0) + 1;
     return acc;
@@ -15,7 +13,7 @@ const CalcosSelected = ({ cart,setCart,promo,enRegla }) => {
     if (cart.length < promo) {
       const itemToAdd = cart.find((item) => item.data.nombre === nombre);
       setCart([...cart, itemToAdd]);
-    } else alert("Ya lo superaste picaron");
+    } else toast.error("Ya haz alcanzado el maximo de la oferta");
   };
 
   const removeOne = (nombre) => {
@@ -27,17 +25,16 @@ const CalcosSelected = ({ cart,setCart,promo,enRegla }) => {
     }
   };
 
-
   return (
     <AnimatePresence>
-      {cart.length !== 0 ? (
+      {miniCart ? (
         <motion.div
-          className={`h-80 w-72 fixed flex flex-col bottom-10 right-5 border-4  rounded px-2 ${
+          className={`h-80 w-72 fixed flex flex-col top-6 right-5 border-4 rounded px-2 ${
             enRegla ? "border-[#ffde59]" : "border-red-700"
           }`}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 50 }}
+          exit={{ opacity: 0, x: 0 }}
           transition={{ duration: 0.3 }}
         >
           <div className="flex gap-2 items-center">
@@ -72,12 +69,18 @@ const CalcosSelected = ({ cart,setCart,promo,enRegla }) => {
                       onClick={() => removeOne(nombre)}
                     />
                   )}
-                  <button
-                    className={`cursor-pointer ${enRegla ? "enabled:" : "disabled" }`}
-                    onClick={() => addOne(nombre)}
-                  >
-                    +
-                  </button>
+                  {enRegla ? (
+                    <button
+                      className={`cursor-pointer`}
+                      onClick={() => addOne(nombre)}
+                    >
+                      +
+                    </button>
+                  ) : (
+                    <button className={`cursor-pointer pointer-events-none`}>
+                      +
+                    </button>
+                  )}
                 </div>
               </li>
             ))}

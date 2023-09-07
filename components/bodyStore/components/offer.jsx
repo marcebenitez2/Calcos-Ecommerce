@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import offerImg from "../../public/oferta.jpg";
+import offerImg from "../../../public/oferta.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { offers } from "@/exports/offers";

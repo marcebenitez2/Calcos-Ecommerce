@@ -4,6 +4,7 @@ import { categories } from "@/exports/categories";
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/context/cartContext";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
   const [originalCalcos, setOriginalCalcos] = useState(calcos);
@@ -38,7 +39,7 @@ const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
       if (cart.length < promoSelected) {
         setCart([...cart, x]);
       } else {
-        alert("No podes agregar mas");
+        toast.error("No puedes agregar mas")
       }
     } else {
       setCart([...cart, x]);

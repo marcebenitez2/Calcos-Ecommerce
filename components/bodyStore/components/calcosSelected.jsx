@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { TiDelete } from "react-icons/ti";
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
+import { BsArrowRight } from "react-icons/bs";
+import Link from "next/link";
 
-const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
+const CalcosSelected = ({ cart, setCart, promo, enRegla, miniCart }) => {
   const counts = cart.reduce((acc, curr) => {
     acc[curr.data.nombre] = (acc[curr.data.nombre] || 0) + 1;
     return acc;
@@ -29,8 +31,8 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
     <AnimatePresence>
       {miniCart ? (
         <motion.div
-          className={`h-80 w-72 fixed flex flex-col top-6 right-5 border-4 rounded px-2 ${
-            enRegla ? "border-[#ffde59]" : "border-red-700"
+          className={`h-fit w-96 fixed flex flex-col top-6 right-5 border-4 rounded px-2 ${
+            enRegla ? "bg-slate-100" : "bg-red-600"
           }`}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 50 }}
@@ -38,19 +40,17 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
           transition={{ duration: 0.3 }}
         >
           <div className="flex gap-2 items-center">
-            <h1
-              className={`text-lg  ${
-                enRegla ? "text-[#ffde59]" : "text-red-700"
-              }`}
-            >
+            <h1 className={`text-lg  ${enRegla ? "text-black" : "text-white"}`}>
               Seleccionadas:
             </h1>
-            {promo != 99 ? `promo de ${promo}` : ""}
+            <p className="text-orange-500">
+              {promo != 99 ? `promo de ${promo}` : ""}
+            </p>
           </div>
           <ul>
             {Object.entries(counts).map(([nombre, count], index) => (
               <li
-                className="w-full flex justify-between items-center "
+                className="w-full flex justify-between items-center text-black "
                 key={index}
               >
                 {nombre} x {count}
@@ -64,8 +64,9 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
                     </button>
                   ) : (
                     <TiDelete
-                      className="cursor-pointer"
-                      fill="red"
+                      className={`cursor-pointer ${
+                        enRegla ? "text-red-600" : "text-black"
+                      }`}
                       onClick={() => removeOne(nombre)}
                     />
                   )}
@@ -85,6 +86,15 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla,miniCart }) => {
               </li>
             ))}
           </ul>
+
+          {enRegla && cart.length != 0 ? (
+            <Link href={"/cart"}>
+              <div className="text-orange-500 flex items-center gap-4 font-semibold animate-bounce animate-infinite animate-duration-500 animate-normal animate-fill-forwards">
+                <span>Ir a pagar</span>
+                <BsArrowRight size={"30px"} />
+              </div>
+            </Link>
+          ) : null}
         </motion.div>
       ) : null}
     </AnimatePresence>

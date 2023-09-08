@@ -1,3 +1,4 @@
+import { CartProvider } from "@/context/cartContext";
 import "./globals.css";
 import { Lexend } from "next/font/google";
 
@@ -12,9 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>
+        <CartProvider>
           <div>{children}</div>
-        </div>
+        </CartProvider>
       </body>
     </html>
   );

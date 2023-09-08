@@ -18,6 +18,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.17",
     "firebase": "^10.3.0",
+    "flowbite-react": "^0.5.0",
     "framer-motion": "^10.16.4",
     "next": "13.4.17",
     "postcss": "8.4.28",

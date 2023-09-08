@@ -32,19 +32,25 @@ const BodyStore = ({ calcos }) => {
   return (
     <div>
       <div
-        className={`w-full px-80 m-auto h-full py-7 2xln:px-40 lgn:px-24 mdn:px-16 mdn:py-16 flex flex-col gap-10 ${
+        className={`w-full px-80 m-auto h-full py-7 2xln:px-40 lgn:px-24 mdn:px-16 mdn:py-16 ${
           miniCart ? "blur" : ""
         }`}
         onClick={changeBlur}
       >
-        <TitleAndHero />
-        <Offer cart={cart} changePromo={setPromo} setEnRegla={setEnRegla} />
-        <GridCalcos
-          calcos={calcos}
-          promoSelected={promo}
-          cart={cart}
-          setCart={setCart}
-        />
+        <div
+          className={`w-full flex flex-col gap-10 ${
+            miniCart ? "pointer-events-none" : ""
+          }`}
+        >
+          <TitleAndHero />
+          <Offer cart={cart} changePromo={setPromo} setEnRegla={setEnRegla} />
+          <GridCalcos
+            calcos={calcos}
+            promoSelected={promo}
+            cart={cart}
+            setCart={setCart}
+          />
+        </div>
       </div>
       <CalcosSelected
         cart={cart}

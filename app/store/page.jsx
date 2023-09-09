@@ -17,7 +17,7 @@ const Page = async () => {
     <div>
       <Link href={"/login"}>
         <BsFillPersonFill
-          className="fixed left-10 bottom-10 text-6xl smn:left-0 mdn:text-5xl"
+          className="fixed left-10 bottom-10 text-6xl smn:left-0 z-50 mdn:text-5xl"
           fill="#ffde59"
         />
       </Link>

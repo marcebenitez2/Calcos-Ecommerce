@@ -11,7 +11,7 @@ const LogoAndCart = () => {
   const { cart, setCart, promo, setPromo, enRegla, setEnRegla,miniCart,setMiniCart} = useContext(CartContext);
 
   return (
-    <div className="w-screen fixed flex justify-between py-7 px-10 mdn:px-1">
+    <div className="w-screen fixed flex justify-between py-7 px-10 mdn:px-1 z-50 smn:py-3">
       <Link href={"/store"}>
         <Image src={logo} width={75} alt="Logo" />
       </Link>
@@ -20,7 +20,7 @@ const LogoAndCart = () => {
         className={`text-5xl mdn:text-4xl`}
         onClick={() => setMiniCart(!miniCart)}
       />
-      <div className="absolute right-8 top-5 w-2 h-2 p-3 bg-white border rounded-full flex justify-center items-center">
+      <div className="absolute right-8 top-5 w-2 h-2 p-3 bg-white border rounded-full flex justify-center items-center smn:top-1">
         <span className="text-black">{cart.length}</span>
       </div>
     </div>

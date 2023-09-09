@@ -39,7 +39,7 @@ const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
       if (cart.length < promoSelected) {
         setCart([...cart, x]);
       } else {
-        toast.error("No puedes agregar mas")
+        toast.error("No puedes agregar mas");
       }
     } else {
       setCart([...cart, x]);
@@ -48,30 +48,32 @@ const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
 
   return (
     <div className="w-full flex flex-col gap-7">
-      <div className="w-full flex justify-between mdn:gap-4">
+      <div className="w-full flex flex-col gap-3 justify-between mdn:gap-4">
         <h1 className="text-4xl mdn:hidden">Catálogo:</h1>
-        <input
-          className="w-2/4 px-4 bg-transparent border border-[#ffde59] rounded mdn:w-2/3 mdn:h-8"
-          placeholder="Buscar..."
-          onChange={handleSearch}
-          value={inputSearch}
-        />
-        <select
-          className="w-1/6 px-4 bg-transparent border border-[#ffde59] mdn:w-1/3 rounded"
-          onChange={categoryFilter}
-        >
-          {categories.map((x) => (
-            <option key={x.id} className="text-black">
-              {x.name}
-            </option>
-          ))}
-        </select>
+        <div className="w-full flex gap-2 mdn:flex-col">
+          <input
+            className="w-full px-4 bg-transparent border border-[#ffde59] rounded mdn:w-full mdn:h-8"
+            placeholder="Buscar..."
+            onChange={handleSearch}
+            value={inputSearch}
+          />
+          <select
+            className="w-1/6 px-4 bg-transparent border border-[#ffde59] mdn:w-full rounded"
+            onChange={categoryFilter}
+          >
+            {categories.map((x) => (
+              <option key={x.id} className="text-black">
+                {x.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div className="grid grid-cols-6 gap-y-4 gap-x-4 place-items-center 2xln:grid-cols-5 xln:grid-cols-4 lgn:grid-cols-3 mdn:grid-cols-2 mdn:px-10 smn:grid-cols-1">
+      <div className="grid grid-cols-6 gap-y-4 gap-x-4 place-items-center 2xln:grid-cols-5 xln:grid-cols-4 lgn:grid-cols-3 mdn:grid-cols-2 mdn:px-0 ">
         {calcosCopy.map((x) => (
           <div
             key={x.id}
-            className={`card cursor-pointer mdn:w-60 ${
+            className={`card cursor-pointer mdn:w-full mdn:h-52 ${
               clickedId === x.id
                 ? "animate-jump animate-once animate-duration-300"
                 : ""
@@ -81,7 +83,7 @@ const GridCalcos = ({ calcos, promoSelected, cart, setCart }) => {
             <div className="card-details">
               <img
                 src={x.data.imagen}
-                className="h-60 w-96"
+                className="h-60 w-96 mdn:h-52 "
                 alt={x.data.descripcion}
               />
             </div>

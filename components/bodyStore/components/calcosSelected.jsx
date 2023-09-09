@@ -31,7 +31,7 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla, miniCart }) => {
     <AnimatePresence>
       {miniCart ? (
         <motion.div
-          className={`h-fit w-96 fixed flex flex-col top-6 right-5 border-4 rounded px-2 ${
+          className={`h-fit w-96 fixed flex flex-col top-6 right-5 border-4 rounded px-2 smn:w-80 ${
             enRegla ? "bg-slate-100" : "bg-red-600"
           }`}
           initial={{ opacity: 0, y: 50 }}
@@ -90,7 +90,7 @@ const CalcosSelected = ({ cart, setCart, promo, enRegla, miniCart }) => {
           {enRegla && cart.length != 0 ? (
             <Link href={"/cart"}>
               <div className="text-orange-500 flex items-center gap-4 font-semibold animate-bounce animate-infinite animate-duration-500 animate-normal animate-fill-forwards">
-                <span>Ir a pagar</span>
+                <span>Finalizar pedido</span>
                 <BsArrowRight size={"30px"} />
               </div>
             </Link>

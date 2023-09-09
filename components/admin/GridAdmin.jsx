@@ -15,17 +15,8 @@ async function StickerGridAdmin() {
   return (
     <div className="flex flex-col gap-12 animate-fade-up animate-once animate-duration-[250ms] animate-ease-linear">
       <div className="w-full px-40 xln:px-9 mdn:px-5 flex flex-col gap-7">
-        <h1 className="text-4xl">OFERTAS:</h1>
-        <div className="w-full grid grid-cols-6 gap-y-4 smn:grid-cols-3 mdn:grid-cols-4 lgn:grid-cols-5 xln:grid-cols-6 2xln:grid-cols-7 gap-x-4">
-          {ofertas.map((oferta) => (
-            <OfertaCardAdmin oferta={oferta} key={oferta.id} />
-          ))}
-          <CalcoCardEmpty />
-        </div>
-      </div>
-      <div className="w-full px-40 xln:px-9 mdn:px-5 flex flex-col gap-7">
         <h1 className="text-4xl">CALCOS:</h1>
-        <div className="w-full grid grid-cols-7 gap-y-4 gap-x-4 smn:grid-cols-3 mdn:grid-cols-4 lgn:grid-cols-5 xln:grid-cols-6 2xln:grid-cols-7 ">
+        <div className="w-full grid grid-cols-7 gap-y-4 gap-x-4 smn:grid-cols-2 mdn:grid-cols-4 lgn:grid-cols-5 xln:grid-cols-6 2xln:grid-cols-7 ">
           <CalcoCardEmpty />
           {calcos.map((calco) => (
             <CalcoCard calco={calco.data} id={calco.id} key={calco.id} />

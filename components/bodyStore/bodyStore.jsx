@@ -32,7 +32,7 @@ const BodyStore = ({ calcos }) => {
   return (
     <div>
       <div
-        className={`w-full px-80 m-auto h-full py-7 2xln:px-40 lgn:px-24 mdn:px-16 mdn:py-16 ${
+        className={`w-full px-80 m-auto h-full py-7 2xln:px-40 lgn:px-24 mdn:px-16 mdn:py-16 smn:px-6 ${
           miniCart ? "blur" : ""
         }`}
         onClick={changeBlur}

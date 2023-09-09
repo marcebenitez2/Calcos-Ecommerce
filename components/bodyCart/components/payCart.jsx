@@ -21,7 +21,7 @@ const PayCart = () => {
   return (
     <div className="h-full w-full max-h-full flex flex-col">
       <h3 className="text-xl underline">Tu pedido:</h3>
-      <div className="h-96 max-h-96 overflow-scroll">
+      <div className="h-full max-h-full overflow-scroll">
         <ul>
           {Object.entries(counts).map(([nombre, count], index) => (
             <li key={index}>

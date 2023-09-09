@@ -20,46 +20,50 @@ const CalcoCardAdmin = ({ calco, id }) => {
   };
 
   return (
-    <div className="h-96">
+    <div className="h-96 mdn:h-64 text-xs">
       {edit ? (
-        <div className="w-full h-full flex flex-col justify-evenly px-8 bg-zinc-600">
-          <input
-            type="file"
-            onChange={(e) => {
-              changeImage(e.target.files[0]);
-            }}
-          />
-          <div className="flex flex-col ">
-            <label>Nombre</label>
+        <div className="w-full h-full flex flex-col justify-between px-2 bg-zinc-600 gap-5 py-6">
+          <div className="flex flex-col">
             <input
-              value={updateName}
-              type="text"
-              className="w-full text-black"
-              onChange={(e) => setupdateName(e.target.value)}
+              type="file"
+              onChange={(e) => {
+                changeImage(e.target.files[0]);
+              }}
             />
+            <div className="flex flex-col ">
+              <label>Nombre</label>
+              <input
+                value={updateName}
+                type="text"
+                className="w-full text-black h-7"
+                onChange={(e) => setupdateName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Categorias</label>
+              <select
+                className="text-black h-7 py-0 w-full"
+                value={updateCategory}
+                onChange={(e) => setupdateCategory(e.target.value)}
+              >
+                {categories.map((x) => (
+                  <option key={x.id}>{x.name}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div>
-            <label>Categorias</label>
-            <select
-              className="text-black"
-              value={updateCategory}
-              onChange={(e) => setupdateCategory(e.target.value)}
+          <div className="flex flex-col gap-5">
+            <button onClick={() => eliminarCalco(id)}>Eliminar</button>
+            <button
+              className="bg-[#ffde59] text-black h-8"
+              onClick={() =>
+                actualizarCalco(id, updateImage, updateName, updateCategory)
+              }
             >
-              {categories.map((x) => (
-                <option key={x.id}>{x.name}</option>
-              ))}
-            </select>
+              Guardar Cambios
+            </button>
+            <button onClick={startEdit}>Cancelar</button>
           </div>
-          <button onClick={()=>eliminarCalco(id)}>Eliminar</button>
-          <button
-            className="bg-[#ffde59] text-black h-8"
-            onClick={() =>
-              actualizarCalco(id, updateImage, updateName, updateCategory)
-            }
-          >
-            Guardar Cambios
-          </button>
-          <button onClick={startEdit}>Cancelar</button>
         </div>
       ) : (
         <div className="w-full h-full flex flex-col bg-white ">

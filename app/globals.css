@@ -27,7 +27,6 @@ body {
 
 .card {
   width: 100%;
-  /* height: 254px; */
   border-radius: 20px;
   background: white;
   position: relative;
@@ -185,8 +184,23 @@ body {
   opacity: 0;
 }
 
-@media screen and (max-width:){
-  
+@media screen and (max-width:1279px){
+  .pay-card{
+    width: 80%;
+  }  
+}
+
+@media screen and (max-width:1023px){
+  .pay-card{
+    height: 80%;
+  }
+}
+
+@media screen and (max-width:767px){
+  .pay-card{
+    width: 90%;
+    height: 100%;
+  }
 }
 
 /* ------------------------------------------------------------------- */

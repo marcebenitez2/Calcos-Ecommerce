@@ -17,7 +17,7 @@ const LogoAndCart = () => {
       </Link>
       <BsCartFill
         fill={enRegla ? "#ffde59" : "red"}
-        className={`text-5xl mdn:text-4xl`}
+        className={`text-5xl mdn:text-4xl cursor-pointer`}
         onClick={() => setMiniCart(!miniCart)}
       />
       <div className="absolute right-8 top-5 w-2 h-2 p-3 bg-white border rounded-full flex justify-center items-center smn:top-1">

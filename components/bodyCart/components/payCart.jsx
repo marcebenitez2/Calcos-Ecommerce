@@ -32,7 +32,7 @@ const PayCart = () => {
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4 items-center">
-          <select className="w-40 bg-[#181818] border-[#f7ba2b] rounded-xl">
+          <select className="w-40 bg-[#181818] border-[#f7ba2b] rounded-xl focus:outline-none">
             <option>4 cm</option>
             <option>8 cm</option>
             <option>12 cm</option>

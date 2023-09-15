@@ -3,7 +3,7 @@ import CalcoCardEmpty from "./calcoCardEmpty";
 import OfertaCardAdmin from "./ofertaCardAdmin";
 import { fetchCalcos, fetchOfertas } from "../../firebase/firebase";
 
-async function fetchdatabase() {
+export async function fetchdatabase() {
   const ofertas = await fetchOfertas();
   const calcos = await fetchCalcos();
   return [ofertas, calcos];

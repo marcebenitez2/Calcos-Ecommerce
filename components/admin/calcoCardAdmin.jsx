@@ -28,6 +28,7 @@ const CalcoCardAdmin = ({ calco, id }) => {
         setTimeout(() => {
           setisloading(false);
         }, 3000);
+        setEdit(false)
       })
       .catch((error) => {
         console.error("Error al guardar los cambios:", error);
